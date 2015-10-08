@@ -7,6 +7,10 @@ public class NavigatorHelper extends HelperBase {
 	public NavigatorHelper(ApplicationManager manager) {
 		super(manager);
 	}
+	
+	public void openHomePage() {
+		driver.get(manager.baseUrl + "/addressbookv4.1.4");
+	}
 
 	public void openMainPage() {
 		driver.get(manager.baseUrl + "/addressbookv4.1.4/group.php");
@@ -22,6 +26,10 @@ public class NavigatorHelper extends HelperBase {
 
 	public void returnToGroupPage() {
 		click(By.linkText("group page"));
+	}
+
+	public void returnHomePage() {
+		click(By.linkText("home page"));
 	}
 
 }

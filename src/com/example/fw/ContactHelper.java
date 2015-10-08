@@ -30,6 +30,25 @@ public class ContactHelper extends HelperBase {
 		type(By.name("address2"), contact.secondaryAddress);
 		type(By.name("phone2"), contact.secondaryHome);
 	}
+	
+
+	public void deleteContact() {
+		click(By.xpath(".//input[@value='Delete']"));
+		
+	}
+
+	public void editContact(int i) {
+		click(By.xpath(".//*[@id='maintable']//tr[@name='entry'][" + i +"]//img[@alt='Edit']"));
+				
+		
+		
+	}
+
+	public void submitUpdate() {
+		click(By.xpath(".//input[@value='Update']"));
+	}
+
+
 
 
 }
