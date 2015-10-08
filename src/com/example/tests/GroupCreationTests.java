@@ -1,29 +1,34 @@
 package com.example.tests;
 
+import java.util.Collections;
+import java.util.List;
+import static org.testng.Assert.assertEquals;
+
 import org.testng.annotations.Test;
 
 public class GroupCreationTests extends TestBase {
-	@Test
-	public void testNonEmptyGroupCreation() throws Exception {
+
+	
+	@Test(dataProvider = "randomValidGroupGeneratot")
+	public void testGroupCreationWithValidData(GroupDate group) throws Exception {
 		app.getNavigatorHelper().openMainPage();
 		app.getNavigatorHelper().gotoGroupsPage();
+
+		//save old state
+		List<GroupDate> oldList = app.getGroupHelper().getGroups();
+		
+		//actions
 		app.getGroupHelper().initGroupCreation();
-		GroupDate group = new GroupDate();
-		group.name = "name1";
-		group.header = "header1";
-		group.footer = "footer1";
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupCreation();
 		app.getNavigatorHelper().returnToGroupPage();
-	}
-
-	@Test
-	public void testEmptyGroupCreation() throws Exception {
-		app.getNavigatorHelper().openMainPage();
-		app.getNavigatorHelper().gotoGroupsPage();
-		app.getGroupHelper().initGroupCreation();
-		app.getGroupHelper().fillGroupForm(new GroupDate("", "", ""));
-		app.getGroupHelper().submitGroupCreation();
-		app.getNavigatorHelper().returnToGroupPage();
+		
+		//save new state
+		List<GroupDate> newList = app.getGroupHelper().getGroups();
+		
+		//compare states
+		oldList.add(group);
+		Collections.sort(oldList);
+		assertEquals(newList, oldList);
 	}
 }
