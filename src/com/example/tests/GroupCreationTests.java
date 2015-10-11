@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class GroupCreationTests extends TestBase {
 
 	
-	@Test(dataProvider = "randomValidGroupGeneratot")
+	@Test(dataProvider = "randomValidGroupGenerator")
 	public void testGroupCreationWithValidData(GroupDate group) throws Exception {
 		app.getNavigatorHelper().openMainPage();
 		app.getNavigatorHelper().gotoGroupsPage();

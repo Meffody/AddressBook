@@ -25,8 +25,10 @@ public class TestBase {
 		app.stop();
 	}
 	
+	
+	/* Random Group Generator */
 	@DataProvider
-	public Iterator<Object[]> randomValidGroupGeneratot() {
+	public Iterator<Object[]> randomValidGroupGenerator() {
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (int i = 0; i <5; i++) {
 			GroupDate group = new GroupDate();
@@ -44,6 +46,40 @@ public class TestBase {
 			return "";
 		} else {
 			return "test" + rnd.nextInt();
+		}
+	}
+	
+	/* Random Contacts Generator */
+	
+	@DataProvider
+	public Iterator<Object[]> randomValidContactsGenerator() {
+		List<Object[]> list = new ArrayList<Object[]>();
+		for (int i = 0; i < 5; i++) {
+			ContactsDate contact = new ContactsDate();
+			contact.firstName = generateRandomContactsString();
+			contact.lastName = generateRandomContactsString();
+			contact.address = generateRandomContactsString();
+			contact.home = generateRandomContactsString();
+			contact.mobile = generateRandomContactsString();
+			contact.work = generateRandomContactsString();
+			contact.email = generateRandomContactsString();
+			contact.emailTwo = generateRandomContactsString();
+			contact.birthDay = generateRandomContactsString();
+			contact.birthMonth = generateRandomContactsString();
+			contact.birthYear = generateRandomContactsString();
+			contact.secondaryAddress = generateRandomContactsString();
+			contact.secondaryHome = generateRandomContactsString();
+			list.add(new Object[]{contact});
+		}
+		return list.iterator();
+	}
+	
+	public String generateRandomContactsString() {
+		Random rnd = new Random();
+		if (rnd.nextInt(3) == 0) {
+			return "";
+		} else {
+			return "testContacts" + rnd.nextInt();
 		}
 	}
 
