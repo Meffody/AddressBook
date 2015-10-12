@@ -37,11 +37,10 @@ public class ContactsDate implements Comparable<ContactsDate> {
 		this.secondaryHome = secondaryHome;
 	}
 
+
 	@Override
 	public String toString() {
-		return "ContactsDate [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", home="
-				+ home + ", mobile=" + mobile + ", work=" + work + ", email=" + email + ", emailTwo=" + emailTwo
-				+ ", secondaryAddress=" + secondaryAddress + ", secondaryHome=" + secondaryHome + "]";
+		return "ContactsDate [firstName=" + firstName + ", lastName=" + lastName +"]";
 	}
 
 	@Override

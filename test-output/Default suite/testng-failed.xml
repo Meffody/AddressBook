@@ -5,7 +5,7 @@
     <classes>
       <class name="com.example.tests.ContactsCreationTests">
         <methods>
-          <include name="testNonEmptyContactsCreation" invocation-numbers="0 1 2 3 4"/>
+          <include name="testNonEmptyContactsCreation" invocation-numbers="0 1"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>

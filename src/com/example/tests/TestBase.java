@@ -30,7 +30,7 @@ public class TestBase {
 	@DataProvider
 	public Iterator<Object[]> randomValidGroupGenerator() {
 		List<Object[]> list = new ArrayList<Object[]>();
-		for (int i = 0; i <5; i++) {
+		for (int i = 0; i <10; i++) {
 			GroupDate group = new GroupDate();
 			group.name = generateRandomString();
 			group.header = generateRandomString();
@@ -42,7 +42,7 @@ public class TestBase {
 	
 	public String generateRandomString() {
 		Random rnd = new Random();
-		if (rnd.nextInt(3) == 0) {
+		if (rnd.nextInt(2) == 0) {
 			return "";
 		} else {
 			return "test" + rnd.nextInt();
@@ -54,7 +54,8 @@ public class TestBase {
 	@DataProvider
 	public Iterator<Object[]> randomValidContactsGenerator() {
 		List<Object[]> list = new ArrayList<Object[]>();
-		for (int i = 0; i < 5; i++) {
+		Random rnd = new Random();
+		for (int i = 0; i < 2; i++) {
 			ContactsDate contact = new ContactsDate();
 			contact.firstName = generateRandomContactsString();
 			contact.lastName = generateRandomContactsString();
@@ -64,9 +65,9 @@ public class TestBase {
 			contact.work = generateRandomContactsString();
 			contact.email = generateRandomContactsString();
 			contact.emailTwo = generateRandomContactsString();
-			contact.birthDay = generateRandomContactsString();
-			contact.birthMonth = generateRandomContactsString();
-			contact.birthYear = generateRandomContactsString();
+			contact.birthDay = Integer.toString(rnd.nextInt(30));
+			contact.birthMonth = generateRandomMonth();
+			contact.birthYear = Integer.toString(rnd.nextInt(2015));
 			contact.secondaryAddress = generateRandomContactsString();
 			contact.secondaryHome = generateRandomContactsString();
 			list.add(new Object[]{contact});
@@ -76,11 +77,20 @@ public class TestBase {
 	
 	public String generateRandomContactsString() {
 		Random rnd = new Random();
-		if (rnd.nextInt(3) == 0) {
-			return "";
+		if (rnd.nextInt(10) == 0) {
+			return "Lol" + rnd.nextInt(4);
 		} else {
 			return "testContacts" + rnd.nextInt();
 		}
 	}
+	
+	
+	public String generateRandomMonth() {
+		String[] month = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		Random rnd = new Random();
+		String birthMonth = month[rnd.nextInt(11)];
+		return birthMonth;
+	}
+
 
 }
