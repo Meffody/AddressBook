@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class GroupModificationTests extends TestBase {
 	@Test(dataProvider = "randomValidGroupGeneratot")
 	public void modifySomeGroup(GroupDate group) {
-		app.getNavigatorHelper().openMainPage();
+		app.navigateTo().mainPage();
 		
 		//save old state
 		List<GroupDate> oldList = app.getGroupHelper().getGroups();
@@ -20,10 +20,11 @@ public class GroupModificationTests extends TestBase {
 		int index = rnd.nextInt(oldList.size()-1);
 		
 		//actions
-		app.getGroupHelper().initGroupModifications(index);
-		app.getGroupHelper().fillGroupForm(group);
-		app.getGroupHelper().submitGroupModifications();
-		app.getNavigatorHelper().returnToGroupPage();
+		app.getGroupHelper()
+			.initGroupModifications(index)
+			.fillGroupForm(group)
+			.submitGroupModifications()
+			.returnToGroupPage();
 		
 		//save new state
 		List<GroupDate> newList = app.getGroupHelper().getGroups();

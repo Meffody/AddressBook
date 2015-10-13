@@ -54,14 +54,13 @@ public class ContactHelper extends HelperBase {
 
 	public List<ContactsDate> getContacts() {
 		List<ContactsDate> contacts = new ArrayList<ContactsDate>();
-		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
-		for (WebElement checkbox: checkboxes) {
+		List<WebElement> checkboxes = driver.findElements(By.xpath(".//tr[@name='entry']/td[3]"));
+		for (WebElement checkbox : checkboxes) {
 			ContactsDate contact = new ContactsDate();
-			String title = checkbox.getAttribute("title");
-			contact.firstName = title.substring("Select (".length(), title.length() - ")".length());
-			contacts.add(contact);
+			String title = checkbox.getText();
+			contact.lastName = title;
+			contacts.add(contact);			
 		}
-		
 		return contacts;
 	}
 

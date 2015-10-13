@@ -10,25 +10,29 @@ public class ContactsCreationTests extends TestBase {
 	
 	@Test(dataProvider = "randomValidContactsGenerator")
 	public void testNonEmptyContactsCreation(ContactsDate contact) throws Exception {
-		app.getNavigatorHelper().openHomePage();
+		app.navigateTo().openHomePage();
 		
 
 		//save old state
 		List<ContactsDate> oldList = app.getContactHelper().getContacts();
 		
 		//actions
-		app.getNavigatorHelper().goToAddNewContactsPage();
+		app.navigateTo().goToAddNewContactsPage();
 		app.getContactHelper().fillContactsForm(contact);
 		app.getContactHelper().submitContactsCreation();
-		app.getNavigatorHelper().openHomePage();
+		app.navigateTo().openHomePage();
 		
 		//save new state
 		List<ContactsDate> newList = app.getContactHelper().getContacts();
 		
 		//compare states
+		assertEquals(newList.size(), oldList.size() + 1);
+		
 		oldList.add(contact);
 		Collections.sort(oldList);
 		assertEquals(newList, oldList);
+		
+
 	}
 
 	//@Test

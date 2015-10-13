@@ -37,10 +37,9 @@ public class ContactsDate implements Comparable<ContactsDate> {
 		this.secondaryHome = secondaryHome;
 	}
 
-
 	@Override
 	public String toString() {
-		return "ContactsDate [firstName=" + firstName + ", lastName=" + lastName +"]";
+		return "ContactsDate [lastName=" + lastName + "]";
 	}
 
 	@Override
@@ -61,17 +60,16 @@ public class ContactsDate implements Comparable<ContactsDate> {
 			return false;
 		ContactsDate other = (ContactsDate) obj;
 		if (firstName == null) {
-			if (other.firstName != null)
+			if (other.lastName != null)
 				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public int compareTo(ContactsDate other) {
-		return this.firstName.toLowerCase().compareTo(other.firstName.toLowerCase());
+		return this.lastName.toLowerCase().compareTo(other.lastName.toLowerCase());
 	}
-	
-	
+
 }

@@ -12,11 +12,11 @@ public class NavigatorHelper extends HelperBase {
 		driver.get(manager.baseUrl + "/addressbookv4.1.4");
 	}
 
-	public void openMainPage() {
+	public void mainPage() {
 		driver.get(manager.baseUrl + "/addressbookv4.1.4/group.php");
 	}
 
-	public void gotoGroupsPage() {
+	public void groupsPage() {
 		click(By.linkText("groups"));
 	}
 
@@ -24,9 +24,6 @@ public class NavigatorHelper extends HelperBase {
 		click(By.linkText("add new"));
 	}
 
-	public void returnToGroupPage() {
-		click(By.linkText("group page"));
-	}
 
 	public void returnHomePage() {
 		click(By.linkText("home page"));

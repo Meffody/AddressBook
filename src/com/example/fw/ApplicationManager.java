@@ -25,7 +25,7 @@ public class ApplicationManager {
 		driver.quit();
 	}
 	
-	public NavigatorHelper getNavigatorHelper() {
+	public NavigatorHelper navigateTo() {
 		if (navigatorHelper == null) {
 			navigatorHelper = new NavigatorHelper(this);
 		}
