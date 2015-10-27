@@ -1,9 +1,9 @@
 package com.example.tests;
 
 public class GroupDate implements Comparable<GroupDate> {
-	public String name;
-	public String header;
-	public String footer;
+	private String name;
+	private String header;
+	private String footer;
 
 	public GroupDate() {
 
@@ -51,6 +51,33 @@ public class GroupDate implements Comparable<GroupDate> {
 	public int compareTo(GroupDate other) {
 		
 		return this.name.toLowerCase().compareTo(other.name.toLowerCase());
+	}
+
+	public GroupDate withName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public GroupDate withHeader(String header) {
+		this.header = header;
+		return this;
+	}
+
+	public GroupDate withFooter(String footer) {
+		this.footer = footer;
+		return null;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getHeader() {
+		return header;
+	}
+
+	public String getFooter() {
+		return footer;
 	}
 	
 	
